@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Mostrando objeto qualquer</h1>
+
+    <h1 th:text="'Obrigado pelos seus R$'${classeQualquer.valor1}+'.00 doados'"></h1>
+    <div th:object="${classeQualquer}">
+        <h3 th:text="'PRIMEIRO VALOR INSERIDO: '+*{valor1}"></h3>
+        <h3 th:text="'SEGUNDO VALOR: '+ *{valor2}"></h3>
+        
+    </div>
+    <hr>
+
+    <a th:href="@{/}" >Voltar</a>
+</body>
+</html>

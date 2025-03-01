@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Spring MVC com Spring Boot</title>
+<style>
+ul {
+	list-style-type: none;
+}
+</style>
+</head>
+<body>
+	<h1>Cadastro de Produto</h1>
+
+	<form th:action="@{/produto/novo}" th:object="${produto}" method="post">
+		<p>
+			<label for="nome">Nome:</label>
+			<input type="text" th:field="*{nome}">
+		</p>
+		<p>		
+			<input type="checkbox" th:field="*{desativado}">
+			<label th:for="${#ids.prev('desativado')}">Desativado</label>
+		</p>
+		
+		<fieldset>
+			<legend>Características</legend>
+			<ul>
+				<li th:each="c : ${todasCaracteristicas}">
+					<input type="checkbox" th:field="*{caracteristicas}" th:value="${c}" />
+					<label th:for="${#ids.prev('caracteristicas')}" th:text="${c.descricao}">Garantia de Loja</label>
+				</li>
+			</ul>
+		</fieldset>
+		<fieldset>
+			<legend>Tipo</legend>
+			<ul>
+				<li th:each="t : ${todosTipos}">
+					<input type="radio" th:field="*{tipo}" th:value="${t}" />
+					<label th:for="${#ids.prev('tipo')}" th:text="${t.descricao}">Perecível</label>
+				</li>
+			</ul>
+		</fieldset>
+		<label th:for="${#ids.next('fornecedor')}">Fornecedor:</label>
+		<select th:field="*{fornecedor}">
+			<option th:each="f : ${fornecedores}" th:value="${f.codigo}" th:text="${f.nome}">Fornecedor X</option>
+		</select>
+		<input type="submit" value="Enviar">
+	</form>
+
+</body>
+</html>

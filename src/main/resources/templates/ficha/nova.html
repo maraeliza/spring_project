@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<form th:action="@{/fichas/abririnseriratividade}" method="post" th:object="${ficha}">
+		<label for="aluno">Aluno:</label>
+		<input type="text" th:field="*{aluno}">
+		<br>
+		<label for="orientador">Orientador:</label>
+		<input type="text" th:field="*{orientador}">
+		<br>
+		<label for="curso">Curso:</label>
+		<input type="text" th:field="*{curso}">
+		<br>
+		<label for="tituloTrabalho">Título do Trabalho:</label>
+		<input type="text" th:field="*{tituloTrabalho}">
+		<br>
+		<input type="submit" value="Inserir Atividade">
+		<div th:each="atividade : *{atividades}">
+			<input type="hidden" th:name="atividades[__${atividadeStat.index}__].data" th:value="${atividade.data}">
+			<input type="hidden" th:name="atividades[__${atividadeStat.index}__].minutos" th:value="${atividade.minutos}">
+			<input type="hidden" th:name="atividades[__${atividadeStat.index}__].resumo" th:value="${atividade.resumo}" />
+		</div>
+	</form>
+	<hr>
+	<h2 th:if="${not #lists.isEmpty(ficha.atividades)}">Atividades:</h2>
+	<div th:each="atividade : ${ficha.atividades}">
+		<p th:text="${atividade.data}"></p>
+		<p th:text="${atividade.minutos}"></p>
+		<p th:text="${atividade.resumo}"></p>
+		<hr>
+	</div>
+</body>
+</html>

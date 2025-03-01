@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spring MVC com Spring Boot</title>
+</head>
+<body>
+	<h1>Bem vindo ao Spring Boot!</h1>
+    <p>
+        <a th:href="@{/vairetornarview}">Solicitar uma view </a>
+        <form th:action="@{/bemvindo}" method="post">
+            <label>NOME: </label>
+            <input type="text" name="nome" placeholder="Digite seu nome aqui" >
+            <input type="text" name="idade" placeholder="Digite sua idade aqui" >
+            <button type="submit"> ENVIAR </button>
+        </form>
+    </p>
+    <br />
+
+
+    <hr>
+	<a th:href="@{/produto/novo}">Cadastrar novo Produto</a>
+
+</body>
+</html>
