@@ -27,7 +27,7 @@ ul {
 			<legend>Características</legend>
 			<ul>
 				<li th:each="c : ${todasCaracteristicas}">
-					<input type="checkbox" th:field="*{caracteristicas}" th:value="${c}" />
+					<input type="checkbox" th:field="*{T(springbootmvc.model.Caracteristica).values()}" th:value="${c}" />
 					<label th:for="${#ids.prev('caracteristicas')}" th:text="${c.descricao}">Garantia de Loja</label>
 				</li>
 			</ul>
